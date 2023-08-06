@@ -1,0 +1,15 @@
+sample-service-url: http
+
+spring:
+  cloud:
+    openfeign:
+      okhttp:
+        enabled: true
+
+resilience4j:
+  retry:
+    instances:
+      sample-service:
+        max-attempts: 3
+        waitDuration: 50ms
+        retryExceptionPredicate: com.example.feignclientplayground.RetryPredicate
